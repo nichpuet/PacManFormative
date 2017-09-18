@@ -71,6 +71,7 @@ namespace PacManFormative
 
             int locationY = 50;
             locationY += 50;
+
             for (int y = 0; y <= 1; y++)
             {
                 formGraphics.DrawEllipse(yellowPen, 222, locationY, 50, 50);
@@ -83,7 +84,6 @@ namespace PacManFormative
 
                 locationY += 50;
 
-
                 formGraphics.DrawPie(yellowPen, 222, locationY, 50, 50, 120, 300);
                 formGraphics.FillPie(yellowBrush, 222, locationY, 50, 50, 120, 300);
 
@@ -94,7 +94,6 @@ namespace PacManFormative
 
                 locationY += 50;
             }
-
 
             formGraphics.DrawString("Congratulations", drawFont, yellowBrush, 10,150);
         }
