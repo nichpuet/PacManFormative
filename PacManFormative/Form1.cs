@@ -21,8 +21,10 @@ namespace PacManFormative
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Sets the button to invisible
             playButton.Visible = false;
 
+            //Sets up the pens, fonts, and brushes
             Graphics formGraphics = this.CreateGraphics();
             Pen drawPen = new Pen(Color.Blue, 5);
             Pen darkPen = new Pen(Color.Black, 5);
@@ -31,15 +33,17 @@ namespace PacManFormative
             SolidBrush darkBrush = new SolidBrush(Color.Black);
             Font drawFont = new Font("Ubuntu", 16, FontStyle.Bold);
 
+            //draws the borders of the pacman track
             formGraphics.DrawLine(drawPen, 0,25,300,25);
             formGraphics.DrawLine(drawPen, 297, 25, 297, 200);
             formGraphics.DrawLine(drawPen, 0, 125, 200, 125);
             formGraphics.DrawLine(drawPen, 197, 125, 197, 200);
 
+            //Runs the loop for pacman moving the right side of the screen. also declares the variable used to move the x location of pacman
             int locationX = 0;
             for (int x = 0; x <= 1; x++){
                 
-                
+                //draws pacman then sleeps, adds 50 to the x coord and draws a black pacman shape over the top of the last pacman.
                 formGraphics.DrawPie(yellowPen, locationX, 50, 50, 50, 30, 300);
                 formGraphics.FillPie(yellowBrush, locationX, 50, 50, 50, 30, 300);
                 
@@ -49,7 +53,8 @@ namespace PacManFormative
                 formGraphics.FillPie(darkBrush, locationX, 50, 50, 50, 30, 300);
 
                 locationX += 50;
-
+                
+                //draws an ellipse where the next pacman should be aswell as doing the same as the last comment with an ellipse
                 formGraphics.DrawEllipse(yellowPen, locationX, 50, 50, 50);
                 formGraphics.FillEllipse(yellowBrush, locationX, 50, 50, 50);
 
@@ -61,19 +66,22 @@ namespace PacManFormative
                 locationX += 50;
 
             }
+            // draws pacman looking down instead of to the right.
             formGraphics.DrawPie(yellowPen,222, 50, 50, 50, 120,300);
             formGraphics.FillPie(yellowBrush, 222, 50, 50, 50, 120,300);
 
             Thread.Sleep(500);
-
+            //covers the last pacman with a black pacman
             formGraphics.DrawPie(darkPen, 222, 50, 50, 50, 120, 300);
             formGraphics.FillPie(darkBrush, 222, 50, 50, 50, 120, 300);
-
+            
+            //establishes the variable for Y coord and adds 50 to it
             int locationY = 50;
             locationY += 50;
 
             for (int y = 0; y <= 1; y++)
             {
+                //does the same as the last for loop but going down the track and adds 50 to the Y
                 formGraphics.DrawEllipse(yellowPen, 222, locationY, 50, 50);
                 formGraphics.FillEllipse(yellowBrush, 222, locationY, 50, 50);
 
@@ -94,7 +102,7 @@ namespace PacManFormative
 
                 locationY += 50;
             }
-
+            //draws the congratulations under the pacman track.
             formGraphics.DrawString("Congratulations", drawFont, yellowBrush, 10,150);
         }
     }
