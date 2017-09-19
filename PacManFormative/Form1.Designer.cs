@@ -34,13 +34,14 @@
             // playButton
             // 
             this.playButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.playButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.playButton.Location = new System.Drawing.Point(150, 300);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(100, 50);
             this.playButton.TabIndex = 0;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.button1_Click);
+            this.playButton.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 

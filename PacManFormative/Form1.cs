@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
 
 // Nick Puetz | PacMan Formative | 14/09/17
 namespace PacManFormative
@@ -19,12 +20,12 @@ namespace PacManFormative
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             //Sets the button to invisible
             playButton.Visible = false;
 
-            //Sets up the pens, fonts, and brushes
+            //Sets up the pens, fonts, soundplayer, and brushes
             Graphics formGraphics = this.CreateGraphics();
             Pen drawPen = new Pen(Color.Blue, 5);
             Pen darkPen = new Pen(Color.Black, 5);
@@ -33,12 +34,16 @@ namespace PacManFormative
             SolidBrush darkBrush = new SolidBrush(Color.Black);
             Font drawFont = new Font("Ubuntu", 16, FontStyle.Bold);
             Font bigFont = new Font("Impact", 30, FontStyle.Bold);
+            SoundPlayer pacSound = new SoundPlayer(Properties.Resources.PacNoise);
 
             //draws the borders of the pacman track
             formGraphics.DrawLine(drawPen, 0,25,300,25);
             formGraphics.DrawLine(drawPen, 297, 25, 297, 200);
             formGraphics.DrawLine(drawPen, 0, 125, 200, 125);
             formGraphics.DrawLine(drawPen, 197, 125, 197, 200);
+            
+            //plays the pacman sound
+            pacSound.Play();
 
             //Draws the pac-man at the bottom of the screen
             formGraphics.DrawString("Pacman", bigFont, yellowBrush, 15,300);
@@ -52,7 +57,8 @@ namespace PacManFormative
                 formGraphics.FillPie(yellowBrush, locationX, 50, 50, 50, 30, 300);
                 
                 Thread.Sleep(500);
-                
+
+                pacSound.Play();
                 formGraphics.DrawPie(darkPen, locationX, 50, 50, 50, 30, 300);
                 formGraphics.FillPie(darkBrush, locationX, 50, 50, 50, 30, 300);
 
@@ -73,6 +79,7 @@ namespace PacManFormative
             // draws pacman looking down instead of to the right.
             formGraphics.DrawPie(yellowPen,222, 50, 50, 50, 120,300);
             formGraphics.FillPie(yellowBrush, 222, 50, 50, 50, 120,300);
+            pacSound.Play();
 
             Thread.Sleep(500);
             //covers the last pacman with a black pacman
@@ -88,6 +95,7 @@ namespace PacManFormative
                 //does the same as the last for loop but going down the track and adds 50 to the Y
                 formGraphics.DrawEllipse(yellowPen, 222, locationY, 50, 50);
                 formGraphics.FillEllipse(yellowBrush, 222, locationY, 50, 50);
+                pacSound.Play();
 
                 Thread.Sleep(500);
 
