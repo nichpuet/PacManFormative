@@ -32,12 +32,16 @@ namespace PacManFormative
             SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
             SolidBrush darkBrush = new SolidBrush(Color.Black);
             Font drawFont = new Font("Ubuntu", 16, FontStyle.Bold);
+            Font bigFont = new Font("Impact", 30, FontStyle.Bold);
 
             //draws the borders of the pacman track
             formGraphics.DrawLine(drawPen, 0,25,300,25);
             formGraphics.DrawLine(drawPen, 297, 25, 297, 200);
             formGraphics.DrawLine(drawPen, 0, 125, 200, 125);
             formGraphics.DrawLine(drawPen, 197, 125, 197, 200);
+
+            //Draws the pac-man at the bottom of the screen
+            formGraphics.DrawString("Pacman", bigFont, yellowBrush, 15,300);
 
             //Runs the loop for pacman moving the right side of the screen. also declares the variable used to move the x location of pacman
             int locationX = 0;
